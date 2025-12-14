@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua Landing Page Incrível</title>
+    <style>
+        /* --- RESET E ESTILOS GERAIS --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', 'Inter', sans-serif; }
+        body { line-height: 1.6; color: #333; background-color: #f4f4f4; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- VARIAVEIS --- */
+        :root {
+            --header-primary: #2563eb;
+            --header-dark: #0f172a;
+            --header-light: #ffffff;
+            --primary-color: #2563eb; 
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b; 
+            --text-light: #fff;
+        }
+
+        /* HEADER */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            height: 80px;
+        }
+        .navbar { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--header-dark); letter-spacing: -0.5px; }
+        .logo span { color: var(--header-primary); }
+        .nav-menu { display: flex; align-items: center; gap: 32px; }
+        .nav-link { font-weight: 500; color: #64748b; font-size: 0.95rem; }
+        .nav-link:hover { color: var(--header-primary); }
+        .btn-header {
+            background-color: var(--header-primary); color: var(--header-light) !important; padding: 12px 28px; border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39); transition: all 0.3s ease;
+        }
+        .btn-header:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.23); background-color: #1d4ed8; }
+
+        /* CONTAINER GERAL */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; overflow: hidden; }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-repeat: no-repeat; background-size: cover; background-position: center; height: 100vh;
+            color: var(--text-light); display: flex; justify-content: center; align-items: center; text-align: center; padding-top: 100px; 
+        }
+        .hero-content h1 { font-size: 3rem; margin-bottom: 20px; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin: 0 auto 30px auto; }
+        .btn-cta { display: inline-block; background: var(--accent-color); color: var(--text-light); padding: 15px 30px; font-size: 1.1rem; border-radius: 5px; font-weight: bold; transition: transform 0.2s; }
+        .btn-cta:hover { transform: scale(1.05); background: #d97706; }
+
+        /* FEATURES */
+        .features { padding: 80px 0; background: var(--text-light); }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2rem; margin-bottom: 10px; color: var(--primary-color); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-card { background: #f9f9f9; padding: 30px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); }
+        .feature-card h3 { margin: 15px 0; }
+
+        /* CONTATO */
+        .contact { padding: 80px 0; background: var(--primary-color); color: var(--text-light); text-align: center; }
+        .contact p { margin-bottom: 30px; }
+
+        /* --- ESTILO DO NOVO FORMULÁRIO NATIVO --- */
+        .custom-form {
+            max-width: 480px;
+            margin: 0 auto;
+            text-align: left;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+            color: #333; 
+            font-size: 0.95rem;
+        }
+        .input-group input { 
+            width: 100%; 
+            padding: 14px; 
+            border: 2px solid #eee; 
+            border-radius: 8px; 
+            font-size: 1rem; 
+            transition: all 0.3s ease;
+            background-color: #fcfcfc;
+        }
+        .input-group input:focus { 
+            border-color: var(--primary-color); 
+            background-color: #fff;
+            outline: none; 
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+        .btn-submit {
+            width: 100%; 
+            padding: 16px; 
+            background-color: var(--accent-color); /* Laranja para chamar atenção (CTA) */
+            color: white; 
+            border: none; 
+            border-radius: 8px;
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(245, 158, 11, 0.2);
+        }
+        .btn-submit:hover { 
+            background-color: #d97706; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(245, 158, 11, 0.3);
+        }
+        .btn-submit:disabled { 
+            background-color: #cbd5e1; 
+            cursor: not-allowed; 
+            transform: none;
+            box-shadow: none;
+            color: #64748b;
+        }
+
+        /* FOOTER */
+        footer { padding: 30px 0; text-align: center; background: #222; color: #ccc; font-size: 0.9rem; }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            .nav-menu { display: none; } 
+            .navbar { justify-content: center; } 
+            .custom-form { width: 95%; padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo">SeuLogo<span>.br</span></a>
+            <nav class="nav-menu">
+                <a href="#hero" class="nav-link">Início</a>
+                <a href="#features" class="nav-link">Benefícios</a>
+                <a href="#contact" class="nav-link">Contato</a>
+                <a href="#contact" class="btn-header">Falar com Consultor</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="container hero-content">
+            <h1>A Solução Perfeita para o Seu Negócio</h1>
+            <p>Aumente suas vendas e conquiste mais clientes com nossa plataforma exclusiva. Simples, rápido e eficiente.</p>
+            <a href="#contact" class="btn-cta">Quero Saber Mais</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por que nos escolher?</h2>
+                <p>Oferecemos as ferramentas que você precisa para crescer.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>⚡ Velocidade</h3>
+                    <p>Sua operação muito mais rápida com nossa tecnologia de ponta otimizada para performance.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🛡️ Segurança</h3>
+                    <p>Seus dados protegidos com criptografia de ponta a ponta e backups diários.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📈 Resultados</h3>
+                    <p>Foque no que importa e veja seus números crescerem com nossos relatórios detalhados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Pronto para começar?</h2>
+            <p>Preencha os campos abaixo e entraremos em contato imediatamente.</p>
+            
+            <form id="formularioNativo" class="custom-form">
+                
+                <div class="input-group">
+                    <label>Nome Completo</label>
+                    <input type="text" name="nome" required placeholder="Digite seu nome...">
+                </div>
+
+                <div class="input-group">
+                    <label>E-mail</label>
+                    <input type="email" name="email" required placeholder="seu@email.com">
+                </div>
+
+                <div class="input-group">
+                    <label>Telefone / WhatsApp</label>
+                    <input type="tel" name="telefone" required placeholder="(xx) 99999-9999">
+                </div>
+
+                <button type="submit" id="btnEnviar" class="btn-submit">RECEBER CONTATO AGORA</button>
+
+            </form>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sua Empresa. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('formularioNativo').addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede a página de recarregar
+            
+            var btn = document.getElementById('btnEnviar');
+            var textoOriginal = btn.innerText;
+            
+            // 1. Feedback visual (carregando)
+            btn.innerText = "ENVIANDO DADOS...";
+            btn.disabled = true;
+
+            // 2. Prepara os dados
+            var formData = new FormData(this);
+
+            // SUA URL JÁ CONFIGURADA
+            var scriptURL = "https://script.google.com/macros/s/AKfycbxzJNmEN-C4WqYiN3XvDSDRQ_XPlhIAaR9QTd7NDmkzxRcLbHrsHNV4QrzQPX-UkdKUTw/exec";
+
+            // 3. Envia silenciosamente
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    // SUCESSO
+                    alert("✅ Recebemos seus dados com sucesso! Em breve um especialista entrará em contato.");
+                    btn.innerText = "ENVIADO COM SUCESSO!";
+                    document.getElementById('formularioNativo').reset(); // Limpa os campos
+                    
+                    // (Opcional) Reseta o botão após 3 segundos
+                    setTimeout(() => {
+                        btn.innerText = textoOriginal;
+                        btn.disabled = false;
+                    }, 3000);
+                })
+                .catch(error => {
+                    // ERRO
+                    console.error('Erro!', error.message);
+                    alert("❌ Ocorreu um erro ao enviar. Por favor, tente novamente.");
+                    btn.innerText = textoOriginal;
+                    btn.disabled = false;
+                });
+        });
+    </script>
+
+</body>
+</html>
